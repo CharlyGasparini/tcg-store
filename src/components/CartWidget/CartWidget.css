@@ -1,0 +1,22 @@
+
+.cartWidget{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.fa-cart-shopping{
+    color: #565759;
+}
+
+.cartWidget__amount{
+    background-color: #565759;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+}

@@ -1,0 +1,20 @@
+.itemListContainer{
+    height: 30vh;
+    max-width: 1200px;
+    text-align: center;
+    margin: auto;
+}
+
+.itemListContainer img{
+    display: none;
+}
+
+.itemListContainer__greeting{
+    margin: 2rem 0;
+}
+
+@media (min-width: 768px){
+    .itemListContainer img{
+        display: block;
+    }
+}
