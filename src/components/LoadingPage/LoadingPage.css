@@ -1,0 +1,31 @@
+.loadingPage{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loadingPage__spinner{
+    margin: 3rem auto 0;
+    width: 5vw;
+    min-width: 100px;
+}
+
+.container{
+    display: inline-block;
+}
+
+.loadingPage__msg{
+    overflow: hidden;
+    border-right: 2px solid black;
+    white-space: nowrap;
+    font-size: 1.6rem;
+    width: 0;
+    animation: typing 1.9s steps(11, end) forwards;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}

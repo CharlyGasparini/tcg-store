@@ -1,0 +1,25 @@
+@media (min-width: 768px){
+    .navbar{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .navbar__brand{
+        flex-direction: row;
+    }
+
+    .navbar__list{
+        flex-direction: row;
+    }
+
+    .navbar__listItem{
+        display: flex;
+        align-items: center;
+        margin-bottom: unset;
+        margin-right: 20px;
+    }
+
+    .App-body__hero{
+        display: block;
+    }
+}

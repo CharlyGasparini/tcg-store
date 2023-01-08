@@ -3,6 +3,18 @@
     margin: auto;
 }
 
-.App-header {
-    background-color: lightgray;
+.hero {
+    max-width: 1200px;
+}
+
+.App-body__hero{
+    display: none;
+    position: relative;
+    top: 100px;
+}
+
+@media (min-width: 768px){
+    .App-body__hero{
+        display: block;
+    }
 }

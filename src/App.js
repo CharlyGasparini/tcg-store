@@ -5,11 +5,12 @@ import NavBar from './components/NavBar/NavBar';
 function App() {
   return (
     <div className="App">
+        <NavBar />
       <header className="App-header">
-        <NavBar/>
+        <img className="hero "src='./images/pokemon-banner.png' alt='pokemon escudo y espada pre-release' />
       </header>
       <body className='App-body'>
-        <ItemListContainer greeting = '¡¡Bienvenidos Entrenadores!!'/>
+        <ItemListContainer greeting = 'Cartas Destacadas'/>
       </body>
     </div>
   );

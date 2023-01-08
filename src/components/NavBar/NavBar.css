@@ -1,9 +1,18 @@
 .navbar{
-    display: flex;
+    width: 100%;
+    position: sticky;
+    z-index: 100;
+    top: 0;
+    background-color: lightgray;
+}
+
+.container{
+    width: 100%;
     max-width: 1200px;
-    margin: auto;
+    display: flex;
     flex-direction: column;
     padding: 1rem;
+    margin: auto;
 }
 
 .navbar__brand{
@@ -28,12 +37,13 @@
     margin-bottom: 5px;
 }
 
+
 @media (min-width: 768px){
-    .navbar{
+    .container{
         flex-direction: row;
         justify-content: space-between;
     }
-
+    
     .navbar__brand{
         flex-direction: row;
     }

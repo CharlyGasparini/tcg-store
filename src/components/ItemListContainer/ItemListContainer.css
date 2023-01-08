@@ -5,16 +5,7 @@
     margin: auto;
 }
 
-.itemListContainer img{
-    display: none;
-}
-
 .itemListContainer__greeting{
+    color: #231f20;
     margin: 2rem 0;
-}
-
-@media (min-width: 768px){
-    .itemListContainer img{
-        display: block;
-    }
 }

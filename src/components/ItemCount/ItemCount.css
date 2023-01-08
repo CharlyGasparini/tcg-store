@@ -1,0 +1,35 @@
+.itemCount{
+    max-width: 200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    /* margin: auto;
+    width: 200px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #565759;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 1rem; */
+}
+
+.itemCount__counter{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #565759;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 1rem;
+}
+
+.itemCount__control{
+    background-color: inherit;
+    color: #ec2328;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
