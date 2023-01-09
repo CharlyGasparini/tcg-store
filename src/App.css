@@ -1,20 +1,21 @@
 .App{
+    background-color: grey;
     text-align: center;
     margin: auto;
 }
 
-.hero {
-    max-width: 1200px;
+.App-header{
+    margin: auto;
 }
 
-.App-body__hero{
+.hero {
     display: none;
-    position: relative;
-    top: 100px;
 }
 
 @media (min-width: 768px){
-    .App-body__hero{
+    .hero{
         display: block;
+        max-width: 1200px;
+        margin: auto;
     }
 }

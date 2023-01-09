@@ -10,10 +10,10 @@ const NavBar = () => {
                     <h2 className="navbar__title">Pokémon Center</h2>
                 </a>
                 <nav className="navbar__list">
-                    <a href="#" className="navbar__listItem">Cartas</a>
-                    <a href="#" className="navbar__listItem">Cajas</a>
+                    <a href="#" className="navbar__listItem">Pokémon</a>
+                    <a href="#" className="navbar__listItem">Energias</a>
+                    <a href="#" className="navbar__listItem">Entrenadores</a>
                     <a href="#" className="navbar__listItem">Accesorios</a>
-                    <a href="#" className="navbar__listItem">Preventas</a>
                 </nav>
                 <CartWidget/>
             </div>
