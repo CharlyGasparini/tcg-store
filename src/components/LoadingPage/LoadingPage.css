@@ -1,5 +1,5 @@
 .loadingPage{
-    width: 100%;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,17 +12,20 @@
     min-width: 100px;
 }
 
-.container{
-    display: inline-block;
+.msgContainer{
+    margin-top: 10px;
 }
 
 .loadingPage__msg{
-    overflow: hidden;
-    border-right: 2px solid black;
-    white-space: nowrap;
-    font-size: 1.6rem;
     width: 0;
-    animation: typing 1.9s steps(11, end) forwards;
+    position: relative;
+    margin: 0 auto;
+    border-right: 2px solid black;
+    font-size: 180%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 2s steps(13, end) forwards infinite;
 }
 
 @keyframes typing {

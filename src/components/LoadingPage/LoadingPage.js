@@ -4,8 +4,8 @@ const LoadingPage = () => {
     return (
     <div className="loadingPage">
         <img src='./images/pokeball.gif' alt='pokebola girando' className="loadingPage__spinner"/>
-        <div className="container">
-            <h3 className="loadingPage__msg">Cargando...</h3>
+        <div className="msgContainer">
+            <p className="loadingPage__msg">Cargando...  </p>
         </div>
     </div>
     )
