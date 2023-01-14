@@ -34,7 +34,6 @@ const ItemListContainer = ({greeting}) => {
                 <h1 className="itemListContainer__greeting">{greeting}</h1>
             </div>
             <ItemList  products={products}/>
-            <ItemCount initial={1} stock={4} onAdd={(count) => console.log("Se agregaron " + count + " productos")}/>
         </div>
     )
 }
