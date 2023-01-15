@@ -11,7 +11,7 @@ const ItemDetailContainer = () => {
     useEffect(() => {
         getProducts()
         .then(products => {
-            setProducts(products[0]);
+            setProducts(products[1]);
         })
         .catch(error => {
             console.log(error);

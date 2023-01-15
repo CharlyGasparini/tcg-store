@@ -1,4 +1,50 @@
 .itemDetail{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+}
+
+.itemDetail__data{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+    text-align: start;
+}
+
+.itemDetail__cardImg{
+    margin-bottom: 20px;
+}
+
+.itemDetail__attacks{
+    padding: 0 20px;
+}
+
+.itemDetail__attacks div{
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.itemDetail__attacks h4{
+    align-self: start;
+}
+
+.itemDetail__weakRes{
+    display: flex;
+    justify-content: space-between;
+}
+
+.itemDetail__weakRes span{
+    text-align: center;
+}
+
+@media (min-width: 768px){
+    .itemDetail{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .itemDetail__cardImg{
+        max-width: 70%;
+    }
 }

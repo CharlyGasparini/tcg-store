@@ -1,0 +1,48 @@
+.itemDetailFormats{
+    display: flex;
+    flex-direction: column;
+    font-size: 0.6rem;
+}
+
+.itemDetailFormats{
+    display: flex;
+    justify-content: space-between;
+}
+
+.itemDetailFormats__form{
+    color: white;
+    margin-bottom: 10px;
+}
+
+.itemDetailFormats__form :first-child{
+    background-color: gray;
+    padding: 3px;
+    padding-right: 3px;
+    border-radius: 5px 0 0 5px;
+}
+
+.legal{
+    background-color: green;
+    padding: 3px;
+    width: 100%;
+    border-radius: 0 5px 5px 0;
+}
+
+.notLegal{
+    background-color: red;
+    padding: 3px;
+    width: 100%;
+    border-radius: 0 5px 5px 0;    
+}
+
+@media (min-width: 768px){
+    .itemDetailFormats{
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 1024px){
+    .itemDetailFormats{
+        font-size: 0.8rem;
+    }
+}

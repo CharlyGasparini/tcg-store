@@ -1,0 +1,26 @@
+.itemDetailOthers{
+    width: 100%;
+    background-color: lightgray;
+    padding: 20px;
+    border-radius: 0 0 5px 5px;
+}
+
+.itemDetailOthers__weakRes{
+    display: flex;
+    justify-content: space-between;
+}
+
+.weakRes{
+    margin-bottom: 20px;
+}
+
+.weakRes h4{
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.weakRes span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

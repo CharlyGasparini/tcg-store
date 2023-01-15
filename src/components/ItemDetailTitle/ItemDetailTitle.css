@@ -1,0 +1,27 @@
+.itemDetail__title{
+    width: 100%;
+}
+
+.itemDetail h1{
+    background-color: gray;
+    color: white;
+    padding: 20px;
+    border-radius: 5px 5px 0 0;
+}
+
+.itemDetail__title div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: lightgray;
+    padding: 20px;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.itemDetail__hp{
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

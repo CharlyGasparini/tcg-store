@@ -1,53 +1,75 @@
 import "./ItemDetail.css";
 import ItemCount from "../ItemCount/ItemCount";
+import ItemDetailTitle from "../ItemDetailTitle/ItemDetailTitle";
+import ItemDetailOthers from "../ItemDetailOthers/ItemDetailOthers";
+import ItemDetailRules from "../ItemDetailRules/ItemDetailRules";
+import ItemDetailAbilities from "../ItemDetailAbilities/ItemDetailAbilities";
+import ItemDetailAttacks from "../ItemDetailAttacks/ItemDetailAttacks";
 
 const ItemDetail = ({card}) => {
 
-    console.log(renderAbilities)
-
-
-    // if(card.abilities !== undefined){
-    //     return (
-    //             <div key={card.abilities.name}>
-    //                 <h3>{card.abilities.type}</h3>
-    //                 <h4>{card.abilities.name}</h4>
-    //                 <p>{card.abilities.text}</p>
-    //             </div> 
-    //             )
-    // }
-
-    const renderAbilities = card.abilities.map(ability => {
+    if(card.supertype === "Pokémon"){
         return (
-        <div key={ability.name}>
-            <h3>{ability.type}</h3>
-            <h4>{ability.name}</h4>
-            <p>{ability.text}</p>
-        </div> 
-        )
-    })
-
-    console.log(renderAbilities)
-
-    return (
-        <div className="itemDetail">
-            <div className="itemDetail__col">
-                <img className="itemDetail__cardImg" src={card.images.large} alt={card.name} />
-                <ItemCount initial={1} stock={4} onAdd={(count) => console.log("Se agregaron " + count + " productos")} />
-            </div>
-            <div className="itemDetail__col">
-                <h1 className="itemDetail__name">{card.name}</h1>
-                <div>
-                    <span className="itemDetail__subtype">{card.subtypes}</span>
-                    <span className="itemDetail__hp">HP{card.hp}</span>
+            <div className="itemDetail">
+                <div className="itemDetail__col">
+                    <img className="itemDetail__cardImg" src={card.images.large} alt={card.name} />
+                    <ItemCount initial={1} stock={4} onAdd={(count) => console.log("Se agregaron " + count + " productos")} />
+                </div>
+                <div className="itemDetail__data">
+                    
+                    <ItemDetailTitle name={card.name} supertype={card.supertype} subtypes={card.subtypes} types={card.types} hp={card.hp}/>
+    
+                    <ItemDetailRules rules={card.rules}/>
+    
+                    <ItemDetailAbilities abilities={card.abilities}/>
+    
+                    <ItemDetailAttacks attacks={card.attacks} />
+    
+                    <ItemDetailOthers legalities={card.legalities} weaknesses={card.weaknesses} resistances={card.resistances} retreatCost={card.retreatCost} />
                 </div>
             </div>
-            <div>
-                <h3>{card.abilities.type}</h3>
-                <h4>{card.abilities.name}</h4>
-                <p>{card.abilities.text}</p>
-            </div> 
-        </div>
-    )
+        )
+    }
+
+    if(card.supertype === "Trainer"){
+        return (
+            <div className="itemDetail">
+                <div className="itemDetail__col">
+                    <img className="itemDetail__cardImg" src={card.images.large} alt={card.name} />
+                    <ItemCount initial={1} stock={4} onAdd={(count) => console.log("Se agregaron " + count + " productos")} />
+                </div>
+                <div className="itemDetail__data">
+                    
+                    <ItemDetailTitle name={card.name} supertype={card.supertype} subtypes={card.subtypes}/>
+    
+                    <ItemDetailRules rules={card.rules}/>
+    
+                    <ItemDetailOthers legalities={card.legalities} />
+                </div>
+            </div>
+        )
+    }
+
+    if(card.supertype === "Energy"){
+        return (
+            <div className="itemDetail">
+                <div className="itemDetail__col">
+                    <img className="itemDetail__cardImg" src={card.images.large} alt={card.name} />
+                    <ItemCount initial={1} stock={4} onAdd={(count) => console.log("Se agregaron " + count + " productos")} />
+                </div>
+                <div className="itemDetail__data">
+                    
+                    <ItemDetailTitle name={card.name} supertype={card.supertype} subtypes={card.subtypes}/>
+    
+                    <ItemDetailRules rules={card.rules}/>
+    
+                    <ItemDetailOthers legalities={card.legalities} />
+                </div>
+            </div>
+        )
+    }
+    
+
 }
 
 export default ItemDetail;

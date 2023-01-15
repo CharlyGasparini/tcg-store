@@ -1,19 +1,8 @@
 .itemCount{
-    max-width: 200px;
-    margin: auto;
+    max-width: 70%;
+    margin: 0 auto 20px;
     display: flex;
     flex-direction: column;
-    /* margin: auto;
-    width: 200px;
-    height: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid #565759;
-    border-radius: 5px;
-    padding: 5px;
-    margin-bottom: 1rem; */
 }
 
 .itemCount__counter{
@@ -32,4 +21,10 @@
     font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
+}
+
+@media (min-width: 768px){
+    .itemCount{
+        margin-bottom: unset;
+    }
 }

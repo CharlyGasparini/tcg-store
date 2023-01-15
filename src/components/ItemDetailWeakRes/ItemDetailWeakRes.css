@@ -1,0 +1,9 @@
+.itemDetailWeakRes h4{
+    margin-bottom: 5px;
+}
+
+.itemDetailWeakRes span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

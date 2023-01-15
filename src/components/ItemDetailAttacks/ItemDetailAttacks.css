@@ -1,0 +1,13 @@
+.itemDetailAttacks{
+    padding: 0 20px;
+}
+
+.itemDetailAttacks div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.energyCost{
+    margin-bottom: 5px;
+}

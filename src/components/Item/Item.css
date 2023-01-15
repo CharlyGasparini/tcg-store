@@ -20,6 +20,11 @@
 
 .card__title{
     font-size: 1.1rem;
+}
+
+.card__expansion{
+    font-style: italic;
+    font-weight: bold;
     margin-bottom: 5px;
 }
 
