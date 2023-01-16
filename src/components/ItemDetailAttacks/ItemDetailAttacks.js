@@ -1,4 +1,4 @@
-import { getLogo } from "../../energyLogos";
+import { getLogos } from "../../energyLogos";
 import "./ItemDetailAttacks.css";
 
 const ItemDetailAttacks = ({attacks}) => {
@@ -10,7 +10,7 @@ const ItemDetailAttacks = ({attacks}) => {
                     <div className="itemDetailAttacks" key={attacks.indexOf(attack)}>
                         <div>
                             <span>
-                                {attack.cost.map(type => getLogo(type))}
+                                {getLogos(attack.cost)}
                             </span>
                             <h3>{attack.name}</h3>
                             <span>{attack.damage}</span>

@@ -1,4 +1,4 @@
-import { getLogo } from "../../energyLogos";
+import { getLogos } from "../../energyLogos";
 import "./ItemDetailWeakRes.css";
 
 
@@ -8,39 +8,19 @@ const ItemDetailWeakRes = ({...card}) => {
             <div className="weakRes">
                 <h4>Weakness</h4>
                 <span>
-                    {card.weaknesses.map(weak => {
-                        return(
-                            <>
-                            {getLogo(weak.type)}
-                            {weak.value}
-                            </>
-                        )
-                    })}   
+                    {getLogos(card.weaknesses)}
                 </span>
             </div>
             <div className="weakRes">
                 <h4>Resistance</h4>
                 <span>
-                    {card.resistances.map(res => {
-                        return(
-                            <>
-                            {getLogo(res.type)}
-                            {res.value}
-                            </>
-                        )
-                    })}   
+                    {getLogos(card.resistances)}
                 </span>
             </div>
             <div className="weakRes">
                 <h4>Retreat Cost</h4>
                 <span>
-                    {card.retreatCost.map(ret => {
-                        return(
-                            <>
-                            {getLogo(ret)}
-                            </>
-                        )
-                    })}   
+                    {getLogos(card.retreatCost)}
                 </span>
             </div>
         </div>

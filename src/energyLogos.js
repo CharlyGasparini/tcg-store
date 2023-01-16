@@ -12,8 +12,36 @@ const energyLogos = {
     "Water": "../images/water-e.png"    
 }
 
-export const getLogo = (type) => {
-    return (
-        <img src={energyLogos[type]} alt={type} style={{width:"30px"}}/>
-    )
+export const getLogos = (types) => {
+    
+    let count = 0; 
+
+    if(typeof types[0] === "string" || types instanceof String){
+
+        return (
+            types.map((type) => {
+                count += 1;
+                return (
+                    <img src={energyLogos[type]} alt={type} style={{width:"30px"}} key={count}/>
+                )
+            })
+        )
+    } else{
+
+        return (
+            types.map((obj) => {
+                count += 1;
+                return (
+                    <>
+                        <img src={energyLogos[obj.type]} alt={obj.type} style={{width:"30px"}} key={count}/>
+                        {obj.value}
+                    </>
+                )
+            })
+        )
+
+    }
+
+
+    
 }
