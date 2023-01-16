@@ -7,15 +7,11 @@ const ItemDetailWeakRes = ({...card}) => {
         <div className="itemDetailOthers__weakRes">
             <div className="weakRes">
                 <h4>Weakness</h4>
-                <span>
-                    {getLogos(card.weaknesses)}
-                </span>
+                {getLogos(card.weaknesses)}
             </div>
             <div className="weakRes">
                 <h4>Resistance</h4>
-                <span>
-                    {getLogos(card.resistances)}
-                </span>
+                {getLogos(card.resistances)}
             </div>
             <div className="weakRes">
                 <h4>Retreat Cost</h4>

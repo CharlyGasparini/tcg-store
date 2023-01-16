@@ -32,10 +32,10 @@ export const getLogos = (types) => {
             types.map((obj) => {
                 count += 1;
                 return (
-                    <>
-                        <img src={energyLogos[obj.type]} alt={obj.type} style={{width:"30px"}} key={count}/>
+                    <span key={count}>
+                        <img src={energyLogos[obj.type]} alt={obj.type} style={{width:"30px"}} />
                         {obj.value}
-                    </>
+                    </span>
                 )
             })
         )
