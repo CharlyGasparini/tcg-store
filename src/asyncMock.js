@@ -168,9 +168,25 @@ const products = [
 ]
 
 export const getProducts = () => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         setTimeout(() => {
             resolve(products)
+        }, 2000)
+    })
+}
+
+export const getProductsById = (id) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(products.find(product => product.id === id));
+        }, 2000)
+    })
+}
+
+export const getProductsByCategory = (category) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(products.filter(product => product.supertype === category));
         }, 2000)
     })
 }
