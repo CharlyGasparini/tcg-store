@@ -1,17 +1,20 @@
 import "./ItemDetailContainer.css";
 import { useState, useEffect } from "react";
-import { getProducts } from "../../asyncMock";
+import { getProductsById } from "../../asyncMock";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import LoadingPage from "../LoadingPage/LoadingPage";
+import { useParams } from "react-router-dom";
 
 const ItemDetailContainer = () => {
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true); 
+    const [product, setProduct] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const params = useParams();
+    const {productId} = params;
 
     useEffect(() => {
-        getProducts()
-        .then(products => {
-            setProducts(products[1]);
+        getProductsById(productId)
+        .then(product => {
+            setProduct(product);
         })
         .catch(error => {
             console.log(error);
@@ -29,7 +32,7 @@ const ItemDetailContainer = () => {
 
     return (
         <div className="itemDetailContainer">
-            <ItemDetail card={products}/>
+            <ItemDetail card={product}/>
         </div>
     )
 }

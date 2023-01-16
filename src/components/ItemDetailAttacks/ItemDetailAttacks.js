@@ -24,18 +24,3 @@ const ItemDetailAttacks = ({attacks}) => {
 }
 
 export default ItemDetailAttacks;
-
-{/* {card.attacks?.map(attack => {
-    return (
-        <div className="itemDetail__attacks" key={attack.name}>
-            <div>
-                <span>{attack.cost.map(type => {
-                    return getLogo(type);
-                })}</span>
-                <h4>{attack.name}</h4>
-                <span>{attack.damage}</span>
-            </div>
-            <p>{attack.text}</p>
-        </div>
-    )
-})} */}

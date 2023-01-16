@@ -33,16 +33,18 @@ img{
 
 button{
     font-family: 'Ubuntu', sans-serif;
+    width: 100%;
+    display: block;
     border: none;
-    background-color: none;
+    padding: 10px 20px;
+    background-color: #ec2328;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 button:hover{
     background-color: #a4191b;
-}
-
-i{
-    font-size: 1.5rem;
 }
 
 h1,h2,h3,h4{

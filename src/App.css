@@ -4,19 +4,3 @@
     text-align: center;
     margin: auto;
 }
-
-.App-header{
-    margin: auto;
-}
-
-.hero {
-    display: none;
-}
-
-@media (min-width: 768px){
-    .hero{
-        display: block;
-        max-width: 1200px;
-        margin: auto;
-    }
-}

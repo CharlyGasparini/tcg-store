@@ -1,19 +1,20 @@
-import Button from "../Button/Button";
+import { useNavigate } from "react-router-dom";
 import "./Item.css";
 
-const Item = ({card}) => {
+const Item = ({name, imgSmall, id, price}) => {
+
+    const navigate = useNavigate();
+
     return (
-        <div className="card">
-            <img src={card.images.small} alt={card.name}/>
+        <article className="card">
+            <img src={imgSmall} alt={name}/>
             <div className="card__body">
-                <h4 className="card__title">{card.name}</h4>
-                <div className="card__expansion">{card.id}</div>
-                <div className="card__price">${card.price}</div>
-                <Button>
-                    Ver detalle del producto
-                </Button>
+                <h4 className="card__title">{name}</h4>
+                <div className="card__expansion">{id}</div>
+                <div className="card__price">${price}</div>
+                <button className="card__btn" onClick={() => navigate(`/detail/${id}`)}>Ver detalle</button>
             </div>
-        </div>
+        </article>
     )
 }
 
