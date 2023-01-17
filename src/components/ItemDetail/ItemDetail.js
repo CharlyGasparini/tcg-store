@@ -8,11 +8,17 @@ import ItemDetailAttacks from "../ItemDetailAttacks/ItemDetailAttacks";
 
 const ItemDetail = ({card}) => {
 
+    document.title = `Pokémon Center | ${card.id}-${card.name}`;
+
     if(card.supertype === "Pokémon"){
         return (
             <div className="itemDetail">
                 <div className="itemDetail__col">
                     <img className="itemDetail__cardImg" src={card.images.large} alt={card.name} />
+                    <div className="itemDetail__priceSet">
+                        <span>Price: ${card.price}</span>
+                        <span>Set: {card.id}</span>
+                    </div>
                     <ItemCount initial={1} stock={4} onAdd={(count) => console.log("Se agregaron " + count + " productos")} />
                 </div>
                 <div className="itemDetail__data">

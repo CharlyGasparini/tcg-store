@@ -12,10 +12,10 @@ const ItemListContainer = ({greeting}) => {
     const {productCategory} = params;
     
     useEffect(() => {
-
-        setLoading(true);
         
         const asyncFunction = (!productCategory) ? getProducts : getProductsByCategory; 
+        
+        setLoading(true);
         
         asyncFunction(productCategory)
         .then(products => {
@@ -27,8 +27,11 @@ const ItemListContainer = ({greeting}) => {
         .finally(() => {
             setLoading(false);
         })
-    }, [productCategory])
+        
+        document.title = !productCategory ? "Pokémon Center | TCG Store" : `Pokémon Center | ${productCategory}`;
 
+    }, [productCategory])
+    
     if(loading){
         return (
             <LoadingPage/>
