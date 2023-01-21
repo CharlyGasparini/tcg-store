@@ -5,8 +5,18 @@ import ItemDetailOthers from "../ItemDetailOthers/ItemDetailOthers";
 import ItemDetailRules from "../ItemDetailRules/ItemDetailRules";
 import ItemDetailAbilities from "../ItemDetailAbilities/ItemDetailAbilities";
 import ItemDetailAttacks from "../ItemDetailAttacks/ItemDetailAttacks";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ItemDetail = ({card}) => {
+
+    const [quantity, setQuantity] = useState(0);
+    const navigate = useNavigate();
+
+    const handleOnAdd = (quantity) => {
+        setQuantity(parseInt(quantity));
+        console.log(`Se agregaron ${quantity} elementos al carrito`);
+    }
 
     document.title = `Pokémon Center | ${card.id}-${card.name}`;
 
@@ -19,8 +29,9 @@ const ItemDetail = ({card}) => {
                         <span>Price: ${card.price}</span>
                         <span>Set: {card.id}</span>
                     </div>
-                    <ItemCount initial={1} stock={4} onAdd={(count) => console.log("Se agregaron " + count + " productos")} />
+                    {(quantity > 0) ? (<button onClick={() => navigate("/cart")} style={{maxWidth:"70%", margin:"auto"}}>Terminar compra</button> ) : (<ItemCount initial={1} stock={4} onAdd={handleOnAdd} />)}
                 </div>
+
                 <div className="itemDetail__data">
                     
                     <ItemDetailTitle name={card.name} supertype={card.supertype} subtypes={card.subtypes} types={card.types} hp={card.hp}/>
@@ -42,8 +53,10 @@ const ItemDetail = ({card}) => {
             <div className="itemDetail">
                 <div className="itemDetail__col">
                     <img className="itemDetail__cardImg" src={card.images.large} alt={card.name} />
-                    <ItemCount initial={1} stock={4} onAdd={(count) => console.log("Se agregaron " + count + " productos")} />
+                    {(quantity > 0) ? (<button onClick={() => navigate("/cart")} />) : (<ItemCount initial={1} stock={4} onAdd={handleOnAdd} />)}
+                    
                 </div>
+
                 <div className="itemDetail__data">
                     
                     <ItemDetailTitle name={card.name} supertype={card.supertype} subtypes={card.subtypes}/>
@@ -61,8 +74,10 @@ const ItemDetail = ({card}) => {
             <div className="itemDetail">
                 <div className="itemDetail__col">
                     <img className="itemDetail__cardImg" src={card.images.large} alt={card.name} />
-                    <ItemCount initial={1} stock={4} onAdd={(count) => console.log("Se agregaron " + count + " productos")} />
+                    {(quantity > 0) ? (<button onClick={() => navigate("/cart")} />) : (<ItemCount initial={1} stock={4} onAdd={handleOnAdd} />)}
+                    
                 </div>
+
                 <div className="itemDetail__data">
                     
                     <ItemDetailTitle name={card.name} supertype={card.supertype} subtypes={card.subtypes}/>
