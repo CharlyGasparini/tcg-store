@@ -53,7 +53,7 @@ const ItemDetail = ({card}) => {
             <div className="itemDetail">
                 <div className="itemDetail__col">
                     <img className="itemDetail__cardImg" src={card.images.large} alt={card.name} />
-                    {(quantity > 0) ? (<button onClick={() => navigate("/cart")} />) : (<ItemCount initial={1} stock={4} onAdd={handleOnAdd} />)}
+                    {(quantity > 0) ? (<button onClick={() => navigate("/cart")} style={{maxWidth:"70%", margin:"auto"}}>Terminar compra</button> ) : (<ItemCount initial={1} stock={4} onAdd={handleOnAdd} />)}
                     
                 </div>
 
@@ -74,7 +74,7 @@ const ItemDetail = ({card}) => {
             <div className="itemDetail">
                 <div className="itemDetail__col">
                     <img className="itemDetail__cardImg" src={card.images.large} alt={card.name} />
-                    {(quantity > 0) ? (<button onClick={() => navigate("/cart")} />) : (<ItemCount initial={1} stock={4} onAdd={handleOnAdd} />)}
+                    {(quantity > 0) ? (<button onClick={() => navigate("/cart")} style={{maxWidth:"70%", margin:"auto"}}>Terminar compra</button> ) : (<ItemCount initial={1} stock={4} onAdd={handleOnAdd} />)}
                     
                 </div>
 
