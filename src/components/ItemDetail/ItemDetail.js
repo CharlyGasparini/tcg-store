@@ -5,17 +5,17 @@ import ItemDetailOthers from "../ItemDetailOthers/ItemDetailOthers";
 import ItemDetailRules from "../ItemDetailRules/ItemDetailRules";
 import ItemDetailAbilities from "../ItemDetailAbilities/ItemDetailAbilities";
 import ItemDetailAttacks from "../ItemDetailAttacks/ItemDetailAttacks";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartProvider";
 
 const ItemDetail = ({id, name, images, supertype, subtypes, types, price, hp, rules, abilities, attacks, legalities, weaknesses, resistances, retreatCost}) => {
 
-    const [quantity, setQuantity] = useState(0);
-    const navigate = useNavigate();
+    const {addItem} = useContext(CartContext);
+    const {small:smallImg, large:largeImg} = images;
+    
 
     const handleOnAdd = (quantity) => {
-        setQuantity(parseInt(quantity));
-        console.log(`Se agregaron ${quantity} elementos al carrito`);
+        addItem({id, name, smallImg, supertype, price, quantity});
     }
 
     document.title = `Pokémon Center | ${id}-${name}`;
@@ -24,12 +24,12 @@ const ItemDetail = ({id, name, images, supertype, subtypes, types, price, hp, ru
         return (
             <div className="itemDetail">
                 <div className="itemDetail__col">
-                    <img className="itemDetail__cardImg" src={images.large} alt={name} />
+                    <img className="itemDetail__cardImg" src={largeImg} alt={name} />
                     <div className="itemDetail__priceSet">
                         <span>Price: ${price}</span>
                         <span>Set: {id}</span>
                     </div>
-                    {(quantity > 0) ? (<button onClick={() => navigate("/cart")} style={{maxWidth:"70%", margin:"auto"}}>Terminar compra</button> ) : (<ItemCount initial={1} stock={4} onAdd={handleOnAdd} />)}
+                    <ItemCount stock={4} onAdd={handleOnAdd} />
                 </div>
 
                 <div className="itemDetail__data">
@@ -46,15 +46,12 @@ const ItemDetail = ({id, name, images, supertype, subtypes, types, price, hp, ru
                 </div>
             </div>
         )
-    }
-
-    if(supertype === "Trainer"){
+    } else{
         return (
             <div className="itemDetail">
                 <div className="itemDetail__col">
-                    <img className="itemDetail__cardImg" src={images.large} alt={name} />
-                    {(quantity > 0) ? (<button onClick={() => navigate("/cart")} />) : (<ItemCount initial={1} stock={4} onAdd={handleOnAdd} />)}
-                    
+                    <img className="itemDetail__cardImg" src={largeImg} alt={name} />
+                    <ItemCount stock={4} onAdd={handleOnAdd} />     
                 </div>
 
                 <div className="itemDetail__data">
@@ -68,29 +65,6 @@ const ItemDetail = ({id, name, images, supertype, subtypes, types, price, hp, ru
             </div>
         )
     }
-
-    if(supertype === "Energy"){
-        return (
-            <div className="itemDetail">
-                <div className="itemDetail__col">
-                    <img className="itemDetail__cardImg" src={images.large} alt={name} />
-                    {(quantity > 0) ? (<button onClick={() => navigate("/cart")} />) : (<ItemCount initial={1} stock={4} onAdd={handleOnAdd} />)}
-                    
-                </div>
-
-                <div className="itemDetail__data">
-                    
-                    <ItemDetailTitle name={name} supertype={supertype} subtypes={subtypes}/>
-    
-                    <ItemDetailRules rules={rules}/>
-    
-                    <ItemDetailOthers legalities={legalities} />
-                </div>
-            </div>
-        )
-    }
-    
-
 }
 
 export default ItemDetail;

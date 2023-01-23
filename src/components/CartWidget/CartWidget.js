@@ -1,10 +1,10 @@
 import "./CartWidget.css";
 
-const CartWidget = () => {
+const CartWidget = ({totalQuantity}) => {
     return (
         <div className="cartWidget">
             <i className="fa-solid fa-cart-shopping"></i>
-            <span className="cartWidget__amount">12</span>
+            <span className="cartWidget__amount">{totalQuantity}</span>
         </div>
     )
 }
