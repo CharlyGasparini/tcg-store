@@ -5,7 +5,7 @@ const LoadingPage = () => {
     <div className="loadingPage">
         <img src='../images/pokeball.gif' alt='pokebola girando' className="loadingPage__spinner"/>
         <div className="msgContainer">
-            <p className="loadingPage__msg">Cargando...  </p>
+            <p className="loadingPage__msg">Loading...  </p>
         </div>
     </div>
     )

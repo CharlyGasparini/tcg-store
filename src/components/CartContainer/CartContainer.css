@@ -1,0 +1,30 @@
+.cartContainer{
+    background-color: whitesmoke;
+    padding: 50px 0;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.border-wrap{
+    background: linear-gradient(90deg,lightgrey,#27b6ec, #05a73c, #ffd808, #cfb052, #e15015, #ea4f46, #f097b7, #93539e, #30505f, #beb5a8);
+    padding: 0 0 3px 0;
+}
+
+.cartContainer__title{
+    background-color: whitesmoke;
+    text-align: left;
+    font-style: italic;
+    color: #231f20;
+}
+
+@media (min-width: 768px){
+    .cartContainer{
+        padding: 50px 50px;
+    }
+}
+
+@media (min-width: 1024px){
+    .cartContainer{
+        padding: 50px 150px;
+    }
+}

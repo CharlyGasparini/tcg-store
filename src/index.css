@@ -47,6 +47,10 @@ button:hover{
     background-color: #a4191b;
 }
 
+i{
+    font-size: 1.3rem;
+}
+
 h1,h2,h3,h4{
     font-family: 'Ubuntu', sans-serif;
     color: #231f20;
