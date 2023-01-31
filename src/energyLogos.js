@@ -1,16 +1,18 @@
+
 const energyLogos = {
-    "Colorless": "../images/colorless-e.png",
-    "Darkness": "../images/darkness-e.png",
-    "Dragon": "../images/dragon-e.png",
-    "Fairy": "../images/fairy-e.png",
-    "Fighting": "../images/fighting-e.png",
-    "Fire": "../images/fire-e.png",
-    "Grass": "../images/grass-e.png",
+        "Colorless": "../images/colorless-e.png", 
+        "Darkness": "../images/darkness-e.png",
+        "Dragon": "../images/dragon-e.png",
+        "Fairy": "../images/fairy-e.png",
+        "Fighting": "../images/fighting-e.png",
+        "Fire": "../images/fire-e.png",
+        "Grass": "../images/grass-e.png",
     "Lightning": "../images/lightning-e.png",
     "Metal": "../images/metal-e.png",
     "Psychic": "../images/psyquic-e.png",
     "Water": "../images/water-e.png"    
 }
+
 
 export const getLogos = (types) => {
     

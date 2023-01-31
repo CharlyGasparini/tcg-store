@@ -1,7 +1,7 @@
 import "./CartItem.css";
 import { Link } from "react-router-dom";
 
-const CartItem = ({id, name, smallImg, price, quantity, supertype, handleOnRemove}) => {
+const CartItem = ({id, set, name, smallImg, price, quantity, supertype, handleOnRemove}) => {
 
     return (
         <div className="cartItem">
@@ -9,7 +9,7 @@ const CartItem = ({id, name, smallImg, price, quantity, supertype, handleOnRemov
                 <img src={smallImg} alt={name} />
                 <div className="cartItem__data">
                     <div>
-                        <div className="cartItem__name">{name} ({id})</div>
+                        <div className="cartItem__name">{name} ({set})</div>
                         <div className="cartItem__category">{supertype}</div>
                     </div>
                     <div className="cartItem__quantity">

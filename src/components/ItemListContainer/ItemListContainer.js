@@ -1,9 +1,11 @@
 import {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import { getProducts, getProductsByCategory } from '../../asyncMock';
+import { getDocs, collection, where, query } from 'firebase/firestore';
+// import { getProducts, getProductsByCategory } from '../../asyncMock';
 import ItemList from "../ItemList/ItemList";
 import LoadingPage from '../LoadingPage/LoadingPage';
 import "./ItemListContainer.css";
+import { db } from '../../services/firebase/firebaseConfig';
 
 const ItemListContainer = ({greeting}) => {
     const [products, setProducts] = useState([]);
@@ -13,13 +15,19 @@ const ItemListContainer = ({greeting}) => {
     
     useEffect(() => {
         
-        const asyncFunction = (!productCategory) ? getProducts : getProductsByCategory; 
-        
         setLoading(true);
+        document.title = !productCategory ? "Pokémon Center | TCG Store" : `Pokémon Center | ${productCategory}`;
         
-        asyncFunction(productCategory)
-        .then(products => {
-            setProducts(products);
+        const collectionRef = productCategory ? query(collection(db, "products"), where("supertype", "==", productCategory)) : collection(db, "products");
+
+        getDocs(collectionRef)
+        .then(response => {
+            const productsAdapted = response.docs.map(doc => {
+                const data = doc.data();
+                return { id: doc.id, ...data}
+            })
+
+            setProducts(productsAdapted);
         })
         .catch(error => {
             console.log(error);
@@ -27,8 +35,20 @@ const ItemListContainer = ({greeting}) => {
         .finally(() => {
             setLoading(false);
         })
+
+        // const asyncFunction = (!productCategory) ? getProducts : getProductsByCategory; 
         
-        document.title = !productCategory ? "Pokémon Center | TCG Store" : `Pokémon Center | ${productCategory}`;
+        // asyncFunction(productCategory)
+        // .then(products => {
+        //     setProducts(products);
+        // })
+        // .catch(error => {
+        //     console.log(error);
+        // })
+        // .finally(() => {
+        //     setLoading(false);
+        // })
+        
 
     }, [productCategory])
     

@@ -1,9 +1,11 @@
 import "./ItemDetailContainer.css";
 import { useState, useEffect } from "react";
-import { getProductsById } from "../../asyncMock";
+// import { getProductsById } from "../../asyncMock";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import { useParams } from "react-router-dom";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../services/firebase/firebaseConfig";
 
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState([]);
@@ -12,9 +14,14 @@ const ItemDetailContainer = () => {
     const {productId} = params;
 
     useEffect(() => {
-        getProductsById(productId)
-        .then(product => {
-            setProduct(product);
+
+        const docRef = doc(db, "products", productId);
+
+        getDoc(docRef)
+        .then(response => {
+            const data = response.data();
+            const productAdapted = { id: response.id, ...data};
+            setProduct(productAdapted);
         })
         .catch(error => {
             console.log(error);
@@ -22,6 +29,17 @@ const ItemDetailContainer = () => {
         .finally(() => {
             setLoading(false);
         })
+
+        // getProductsById(productId)
+        // .then(product => {
+        //     setProduct(product);
+        // })
+        // .catch(error => {
+        //     console.log(error);
+        // })
+        // .finally(() => {
+        //     setLoading(false);
+        // })
     }, [productId])
 
     if(loading){

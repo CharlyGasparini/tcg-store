@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,700;1,200&family=Ubuntu:wght@300;400;700&display=swap');
 
+:root {
+    --redPkmn: #ec2328;
+    --redPkmn2: #a4191b;
+    --greenGrass: #05a73c;
+    --yellowLightning: #ffd808;
+    --grayDark: #30505f;
+    --roseFairy: #f097b7;
+    --redFire: #ea4f46;
+    --purplePsiq: #93539e;
+    --grayMetal: #beb5a8;
+    --brownDragon: #cfb052;
+    --blueWater: #27b6ec;
+    --brownFight: #e15015;
+}
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -24,7 +39,7 @@ a{
 }
 
 a:hover{
-    color: #ec2328;
+    color: var(--redPkmn);
 }
 
 img{
@@ -37,14 +52,14 @@ button{
     display: block;
     border: none;
     padding: 10px 20px;
-    background-color: #ec2328;
+    background-color: var(--redPkmn);
     color: white;
     border-radius: 5px;
     cursor: pointer;
 }
 
 button:hover{
-    background-color: #a4191b;
+    background-color: var(--redPkmn2);
 }
 
 i{

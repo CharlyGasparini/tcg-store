@@ -8,18 +8,21 @@ import ItemDetailAttacks from "../ItemDetailAttacks/ItemDetailAttacks";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartProvider";
 import { useNavigate } from "react-router-dom";
+import { Notifications } from "../../notifications/notificationService";
 
-const ItemDetail = ({id, name, images, supertype, subtypes, types, price, hp, rules, abilities, attacks, legalities, weaknesses, resistances, retreatCost}) => {
+const ItemDetail = ({id, set, name, images, supertype, subtypes, types, price, hp, rules, abilities, attacks, legalities, weaknesses, resistances, retreatCost}) => {
 
     const {addItem, isInCart} = useContext(CartContext);
+    const {setNotification} = useContext(Notifications);
     const {small:smallImg, large:largeImg} = images;
     const navigate = useNavigate();
 
     const handleOnAdd = (quantity) => {
-        addItem({id, name, smallImg, supertype, price, quantity});
+        addItem({id, set, name, smallImg, supertype, price, quantity});
+        setNotification("success", `Se ha agregado ${quantity} ${name} (${set}) al carrito`);
     }
 
-    document.title = `Pokémon Center | ${id}-${name}`;
+    document.title = `Pokémon Center | ${set}-${name}`;
 
     if(supertype === "Pokémon"){
         return (
@@ -28,7 +31,7 @@ const ItemDetail = ({id, name, images, supertype, subtypes, types, price, hp, ru
                     <img className="itemDetail__cardImg" src={largeImg} alt={name} />
                     <div className="itemDetail__priceSet">
                         <span>Price: ${price}</span>
-                        <span>Set: {id}</span>
+                        <span>Set: {set}</span>
                     </div>
                     { isInCart(id) ? <button onClick={() => navigate("/cart")} style={{width:"70%", margin:"auto"}}>Go to cart</button> : <ItemCount  initial={1} stock={4} onAdd={handleOnAdd} /> }
                 </div>
@@ -37,9 +40,9 @@ const ItemDetail = ({id, name, images, supertype, subtypes, types, price, hp, ru
                     
                     <ItemDetailTitle name={name} supertype={supertype} subtypes={subtypes} types={types} hp={hp}/>
     
-                    <ItemDetailRules rules={rules}/>
+                    {rules !== undefined && <ItemDetailRules rules={rules}/>}
     
-                    <ItemDetailAbilities abilities={abilities}/>
+                    {abilities !== undefined && <ItemDetailAbilities abilities={abilities}/>}
     
                     <ItemDetailAttacks attacks={attacks} />
     
@@ -54,7 +57,7 @@ const ItemDetail = ({id, name, images, supertype, subtypes, types, price, hp, ru
                     <img className="itemDetail__cardImg" src={largeImg} alt={name} />
                     <div className="itemDetail__priceSet">
                         <span>Price: ${price}</span>
-                        <span>Set: {id}</span>
+                        <span>Set: {set}</span>
                     </div>
                     { isInCart(id) ? <button onClick={() => navigate("/cart")} style={{width:"70%", margin:"30px auto"}}>Go to cart</button> : <ItemCount  initial={1} stock={4} onAdd={handleOnAdd} /> }
                 </div>

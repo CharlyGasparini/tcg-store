@@ -6,7 +6,7 @@
 }
 
 .border-wrap{
-    background: linear-gradient(90deg,lightgrey,#27b6ec, #05a73c, #ffd808, #cfb052, #e15015, #ea4f46, #f097b7, #93539e, #30505f, #beb5a8);
+    background: linear-gradient(90deg,lightgrey,var(--blueWater), var(--greenGrass), var(--yellowLightning), var(--brownDragon), var(--brownFight), var(--redFire), var(--roseFairy), var(--purplePsiq), var(--grayMetal), var(--grayDark));
     padding: 0 0 3px 0;
 }
 
