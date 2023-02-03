@@ -10,7 +10,7 @@ import { CartContext } from "../../context/CartProvider";
 import { useNavigate } from "react-router-dom";
 import { Notifications } from "../../notifications/notificationService";
 
-const ItemDetail = ({id, set, name, images, supertype, subtypes, types, price, hp, rules, abilities, attacks, legalities, weaknesses, resistances, retreatCost}) => {
+const ItemDetail = ({id, set, name, images, supertype, subtypes, types, price, hp, rules, abilities, attacks, legalities, weaknesses, resistances, retreatCost, stock}) => {
 
     const {addItem, isInCart} = useContext(CartContext);
     const {setNotification} = useContext(Notifications);
@@ -33,7 +33,7 @@ const ItemDetail = ({id, set, name, images, supertype, subtypes, types, price, h
                         <span>Price: ${price}</span>
                         <span>Set: {set}</span>
                     </div>
-                    { isInCart(id) ? <button onClick={() => navigate("/cart")} style={{width:"70%", margin:"auto"}}>Go to cart</button> : <ItemCount  initial={1} stock={4} onAdd={handleOnAdd} /> }
+                    { isInCart(id) ? <button onClick={() => navigate("/cart")} style={{width:"70%", margin:"auto"}}>Go to cart</button> : <ItemCount  initial={1} stock={stock} onAdd={handleOnAdd} /> }
                 </div>
 
                 <div className="itemDetail__data">
@@ -59,7 +59,7 @@ const ItemDetail = ({id, set, name, images, supertype, subtypes, types, price, h
                         <span>Price: ${price}</span>
                         <span>Set: {set}</span>
                     </div>
-                    { isInCart(id) ? <button onClick={() => navigate("/cart")} style={{width:"70%", margin:"30px auto"}}>Go to cart</button> : <ItemCount  initial={1} stock={4} onAdd={handleOnAdd} /> }
+                    { isInCart(id) ? <button onClick={() => navigate("/cart")} style={{width:"70%", margin:"30px auto"}}>Go to cart</button> : <ItemCount  initial={1} stock={stock} onAdd={handleOnAdd} /> }
                 </div>
 
                 <div className="itemDetail__data">

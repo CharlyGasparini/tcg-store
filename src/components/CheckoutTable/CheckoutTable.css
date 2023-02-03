@@ -1,0 +1,11 @@
+.checkout__table{   
+    background-color: lightgray;    
+    border-radius: 5px;
+    height: max-content;
+    padding: 20px;
+    text-align: left;
+}
+
+td{
+    padding: 10px 0;
+}

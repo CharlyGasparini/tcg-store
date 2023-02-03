@@ -23,7 +23,7 @@ const CartItemList = ({cart, removeItem, addItem, totalPrice, clearCart}) => {
             <h3>Subtotal:</h3>
             <span>${totalPrice}</span>
         </div>
-        <button onClick={() => navigate("/purchase")}>Procede to checkout</button>
+        <button onClick={() => navigate("/checkout")}>Procede to checkout</button>
     </div>  
 }
 
