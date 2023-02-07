@@ -1,0 +1,19 @@
+.checkoutConfirm{
+    background-color: whitesmoke;
+    padding: 50px 0;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.checkoutConfirm h1{
+    margin-bottom: 2rem;
+}
+
+.checkoutConfirm h2{
+    margin-bottom: 2rem;
+}
+
+.checkoutConfirm button {
+    margin: auto;
+    max-width: 500px;
+}

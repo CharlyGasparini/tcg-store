@@ -6,7 +6,7 @@ const Notification = ({type, message}) => {
 
     const notificationStyle = {
         position: "absolute",
-        right: "50px",
+        right: "10px",
         top: "100px",
         backgroundColor: type === "success" ? "var(--greenGrass)" : "var(--redFire)",
         color: "white",

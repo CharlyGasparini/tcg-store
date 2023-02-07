@@ -7,7 +7,6 @@ export const CartProvider = ({children}) => {
 
     const {setNotification} = useContext(Notifications);
     const [cart, setCart] = useState([]);
-    console.log(cart);
 
     const isInCart = (id) => cart.some(card => id === card.id);
     
@@ -27,13 +26,14 @@ export const CartProvider = ({children}) => {
     }
 
     const removeItem = (id) => {
-        setCart(cart.filter(card => card.id !== id)); 
-        setNotification("error", "Se ha eliminado el producto del carrito")
+        const card = cart.find(card => card.id === id); 
+        setNotification("error", `${card.quantity} product has been removed from the cart`)
+        setCart(cart.filter(card => card.id !== id));
     }
 
     const clearCart = () => {
         setCart([]);
-        setNotification("error", "Se vació el carrito");
+        setNotification("error", "The cart has been emptied");
     }
 
     const getTotalQuantity = () => {

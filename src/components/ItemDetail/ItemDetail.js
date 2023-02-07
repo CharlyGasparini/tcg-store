@@ -22,6 +22,9 @@ const ItemDetail = ({id, set, name, images, supertype, subtypes, types, price, h
         setNotification("success", `Se ha agregado ${quantity} ${name} (${set}) al carrito`);
     }
 
+    const HaveStock = isInCart(id) ? <button onClick={() => navigate("/cart")} style={{width:"70%", margin:"auto"}}>Go to cart</button> : <ItemCount  initial={1} stock={stock} onAdd={handleOnAdd} />;
+    const DontHaveStock = <h3 style={{color:"var(--redFire)"}}>Out of stock</h3>
+
     document.title = `Pokémon Center | ${set}-${name}`;
 
     if(supertype === "Pokémon"){
@@ -33,7 +36,7 @@ const ItemDetail = ({id, set, name, images, supertype, subtypes, types, price, h
                         <span>Price: ${price}</span>
                         <span>Set: {set}</span>
                     </div>
-                    { isInCart(id) ? <button onClick={() => navigate("/cart")} style={{width:"70%", margin:"auto"}}>Go to cart</button> : <ItemCount  initial={1} stock={stock} onAdd={handleOnAdd} /> }
+                    {(stock !== 0) ? HaveStock : DontHaveStock }
                 </div>
 
                 <div className="itemDetail__data">
@@ -59,7 +62,7 @@ const ItemDetail = ({id, set, name, images, supertype, subtypes, types, price, h
                         <span>Price: ${price}</span>
                         <span>Set: {set}</span>
                     </div>
-                    { isInCart(id) ? <button onClick={() => navigate("/cart")} style={{width:"70%", margin:"30px auto"}}>Go to cart</button> : <ItemCount  initial={1} stock={stock} onAdd={handleOnAdd} /> }
+                    {(stock !== 0) ? HaveStock : DontHaveStock }
                 </div>
 
                 <div className="itemDetail__data">

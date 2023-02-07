@@ -1,8 +1,8 @@
 import { addDoc, collection, documentId, getDocs, query, where, writeBatch } from "firebase/firestore";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartProvider";
 import { db } from "../../services/firebase/firebaseConfig";
+import CheckoutConfirm from "../CheckoutConfirm/CheckoutConfirm";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
 import CheckoutTable from "../CheckoutTable/CheckoutTable";
 import LoadingPage from "../LoadingPage/LoadingPage";
@@ -21,7 +21,6 @@ const Checkout = () => {
     const [city, setCity] = useState("");
     const [orderId, setOrderId] = useState("");
     const [loading, setLoading] = useState(false);
-    const navigate = useNavigate();
 
     const setters = [setName, setLastName, setPhone, setEmail, setAddress, setCity];
     
@@ -70,13 +69,13 @@ const Checkout = () => {
             
             if(productsOutStock.length === 0) {
                 await batch.commit();
-    
                 const orderRef = collection(db, "orders");
                 const orderAdded = await addDoc(orderRef, order);
                 const { id } = orderAdded;
                 setOrderId(id);
                 clearCart();
-            }
+
+            } 
     
         } catch(error) {
             console.log(error)
@@ -84,22 +83,10 @@ const Checkout = () => {
             setLoading(false);
         }
     }
-
-    if(cart.length === 0) {
-        return (
-            <div>
-            <h1>No hay productos en el carrito</h1>
-            <button onClick={() => navigate("/")}>Volver a la página principal</button>       
-        </div>
-        )
-    }
     
     if(orderId) {
         return (
-            <div>
-                <h1>El ID de su compra es {orderId}</h1>
-                <button onClick={() => navigate("/")}>Volver a la página principal</button>       
-            </div>
+            <CheckoutConfirm id={orderId} />
         )
     }
     
