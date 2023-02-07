@@ -1,48 +1,29 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
+import Swal from 'sweetalert2'
 
 export const Notifications = createContext();
 
-const Notification = ({type, message}) => {
+const alertSuccess = Swal.mixin({
+    title: "Success!",
+    icon: "success",
+    timer: 2000,
+    showConfirmButton: false
+})
 
-    const notificationStyle = {
-        position: "absolute",
-        right: "10px",
-        top: "100px",
-        backgroundColor: type === "success" ? "var(--greenGrass)" : "var(--redFire)",
-        color: "white",
-        borderRadius: "5px",
-        padding: "10px"
-    }
-
-    if(!message){
-        return null;
-    }
-
-    return (
-        <div style={notificationStyle}>
-            {message}
-        </div>
-    )
-}
-
+const alertError = Swal.mixin({
+    title: "Error!",
+    icon: "error"
+})
 
 export const NotificationsProvider = ({children}) => {
 
-    const [message, setMessage] = useState("");
-    const [type, setType] = useState("error");
-
     const setNotification = (type, message) => {
-        setMessage(message);
-        setType(type)
-
-        setTimeout(() => {
-            setMessage("")
-        }, 5000)
+        
+        (type === "success") ? alertSuccess.fire({text:message}) : alertError.fire({text:message});
     }
 
     return (
         <Notifications.Provider value={{setNotification}}>
-            <Notification message={message} type={type}></Notification>
             {children}
         </Notifications.Provider>
     )

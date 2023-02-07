@@ -19,7 +19,7 @@ const ItemDetail = ({id, set, name, images, supertype, subtypes, types, price, h
 
     const handleOnAdd = (quantity) => {
         addItem({id, set, name, smallImg, supertype, price, quantity});
-        setNotification("success", `Se ha agregado ${quantity} ${name} (${set}) al carrito`);
+        setNotification("success", `${quantity} ${name} (${set}) added to cart`);
     }
 
     const HaveStock = isInCart(id) ? <button onClick={() => navigate("/cart")} style={{width:"70%", margin:"auto"}}>Go to cart</button> : <ItemCount  initial={1} stock={stock} onAdd={handleOnAdd} />;

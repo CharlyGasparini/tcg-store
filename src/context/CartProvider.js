@@ -27,13 +27,13 @@ export const CartProvider = ({children}) => {
 
     const removeItem = (id) => {
         const card = cart.find(card => card.id === id); 
-        setNotification("error", `${card.quantity} product has been removed from the cart`)
+        setNotification("success", `${card.quantity} item removed from the cart`)
         setCart(prev => prev.filter(card => card.id !== id));
     }
 
     const clearCart = () => {
         setCart([]);
-        setNotification("error", "The cart has been emptied");
+        setNotification("success", "Cart empty");
     }
 
     const getTotalQuantity = () => {

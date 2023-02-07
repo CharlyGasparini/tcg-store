@@ -84,11 +84,11 @@ const Checkout = () => {
                     const itemFromCart = cart.find( item => item.id === product.id);
                     if(product.stock > 0){
                         itemFromCart.quantity = product.stock;
-                        setNotification("error", `Not enough stock of ${product.name} (${product.set}). The quantity in the cart has been replaced with the available stock.`)
+                        setNotification("error", `Not enough stock of ${product.name} (${product.set}). The cart has been modified.`)
 
                     } else {
                         removeItem(product.id);
-                        setNotification("error", `${product.name} (${product.set}) out of stock. It has been removed from the cart`)
+                        setNotification("error", `${product.name} (${product.set}) out of stock. It has been removed from the cart.`)
                     }
                 })
             }
