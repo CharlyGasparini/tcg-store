@@ -1,6 +1,8 @@
 import { addDoc, collection, documentId, getDocs, query, where, writeBatch } from "firebase/firestore";
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartProvider";
+import { Notifications } from "../../notifications/notificationService";
 import { db } from "../../services/firebase/firebaseConfig";
 import CheckoutConfirm from "../CheckoutConfirm/CheckoutConfirm";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
@@ -11,7 +13,8 @@ import "./Checkout.css";
 
 const Checkout = () => {
 
-    const {cart, totalPrice, clearCart} = useContext(CartContext);
+    const {cart, totalPrice, clearCart, removeItem} = useContext(CartContext);
+    const {setNotification} = useContext(Notifications);
 
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");    
@@ -21,6 +24,7 @@ const Checkout = () => {
     const [city, setCity] = useState("");
     const [orderId, setOrderId] = useState("");
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const setters = [setName, setLastName, setPhone, setEmail, setAddress, setCity];
     
@@ -75,7 +79,19 @@ const Checkout = () => {
                 setOrderId(id);
                 clearCart();
 
-            } 
+            } else {
+                productsOutStock.forEach( product => {
+                    const itemFromCart = cart.find( item => item.id === product.id);
+                    if(product.stock > 0){
+                        itemFromCart.quantity = product.stock;
+                        setNotification("error", `Not enough stock of ${product.name} (${product.set}). The quantity in the cart has been replaced with the available stock.`)
+
+                    } else {
+                        removeItem(product.id);
+                        setNotification("error", `${product.name} (${product.set}) out of stock. It has been removed from the cart`)
+                    }
+                })
+            }
     
         } catch(error) {
             console.log(error)
@@ -83,11 +99,15 @@ const Checkout = () => {
             setLoading(false);
         }
     }
-    
+
     if(orderId) {
         return (
             <CheckoutConfirm id={orderId} />
         )
+    }
+
+    if(cart.length === 0){
+        return navigate("/");
     }
     
     if(loading) {

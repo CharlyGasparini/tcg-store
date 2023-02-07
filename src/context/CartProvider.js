@@ -28,7 +28,7 @@ export const CartProvider = ({children}) => {
     const removeItem = (id) => {
         const card = cart.find(card => card.id === id); 
         setNotification("error", `${card.quantity} product has been removed from the cart`)
-        setCart(cart.filter(card => card.id !== id));
+        setCart(prev => prev.filter(card => card.id !== id));
     }
 
     const clearCart = () => {
