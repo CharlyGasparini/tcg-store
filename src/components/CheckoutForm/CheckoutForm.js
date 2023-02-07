@@ -1,29 +1,19 @@
-import { useState } from "react";
 import "./CheckoutForm.css";
 
-const ShippingAddress = () => {
-    return (
-        <>
+const CheckoutForm = ( {handleSubmit, setters} ) => {
 
-        </>
-    )
-}
-
-const CheckoutForm = () => {
-
-    const [shipping, setShipping] = useState(false);
-
+    const [setName, setLastName, setPhone, setEmail, setAddress, setCity] = setters;
 
     return(
-        <form className="form">
-            
+        <form className="form" onSubmit={handleSubmit}>       
             <h2>Shipping information</h2>
-            <input type="text" id="form__name" placeholder="Name"/>
-            <input type="tel" id="form__name" placeholder="Phone"/>
-            <input type="email" id="form__name" placeholder="E-mail"/>
-            <input type="email" id="form__name" placeholder="Address"/>
-            <input type="email" id="form__name" placeholder="City"/>
-            <button className="form__btn" >Place your order</button>
+            <input type="text" placeholder="Name" onChange={(e) => setName(e.target.value)} />
+            <input type="text" placeholder="Last Name" onChange={(e) => setLastName(e.target.value)} />
+            <input type="tel" placeholder="Phone" onChange={(e) => setPhone(e.target.value)} />
+            <input type="email" placeholder="E-mail" onChange={(e) => setEmail(e.target.value)} />
+            <input type="text" placeholder="Address" onChange={(e) => setAddress(e.target.value)} />
+            <input type="text" placeholder="City" onChange={(e) => setCity(e.target.value)} />
+            <button type="submit" className="form__btn" >Place your order</button>
         </form>
     )
 }

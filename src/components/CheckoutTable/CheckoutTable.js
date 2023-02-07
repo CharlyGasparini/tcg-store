@@ -9,9 +9,9 @@ const CheckoutTable = ( {cart, totalPrice} ) => {
                 </tr>
             </thead>
             <tbody>
-                {cart.map(({name, set, quantity, price}) => {
+                {cart.map(({name, set, quantity, price, id}) => {
                     return (
-                        <tr>
+                        <tr key={id}>
                             <td>
                                 {name}({set}) x{quantity}
                             </td>
@@ -23,7 +23,7 @@ const CheckoutTable = ( {cart, totalPrice} ) => {
             <tfoot>
                 <tr>
                     <th>Total</th>
-                    <td style={{textAlign: "end"}}>${totalPrice}</td>
+                    <th style={{textAlign: "end"}}>${totalPrice}</th>
                 </tr>
             </tfoot>
         </table>
