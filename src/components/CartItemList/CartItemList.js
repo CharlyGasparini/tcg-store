@@ -1,10 +1,13 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { Notifications } from "../../notifications/notificationService";
 import CartItem from "../CartItem/CartItem";
 import "./CartItemList.css";
 
 const CartItemList = ({cart, removeItem, addItem, totalPrice, clearCart}) => {
 
     const navigate = useNavigate();
+    const {setNotification} = useContext(Notifications);
 
     return (cart.length === 0) ? 
     <div className="cartItemList">
@@ -13,7 +16,10 @@ const CartItemList = ({cart, removeItem, addItem, totalPrice, clearCart}) => {
     </div>
     :
     <div className="cartItemList">
-        <button className="cartItemList__clearBtn" onClick={() => clearCart()}>Clear cart</button>
+        <button className="cartItemList__clearBtn" onClick={() => {
+            clearCart();
+            setNotification("success", "Cart empty");
+            }}>Clear cart</button>
         {cart.map(card => {
             return (
                 <CartItem key={card.id} {...card} handleOnRemove={removeItem} handleOnAdd={addItem} />

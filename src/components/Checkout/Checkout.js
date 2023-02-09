@@ -80,17 +80,18 @@ const Checkout = () => {
                 clearCart();
 
             } else {
+
                 productsOutStock.forEach( product => {
                     const itemFromCart = cart.find( item => item.id === product.id);
                     if(product.stock > 0){
                         itemFromCart.quantity = product.stock;
-                        setNotification("error", `Not enough stock of ${product.name} (${product.set}). The cart has been modified.`)
 
                     } else {
                         removeItem(product.id);
-                        setNotification("error", `${product.name} (${product.set}) out of stock. It has been removed from the cart.`)
                     }
                 })
+
+                setNotification("error", "Not enough stock of some products. Your cart has been updated.");
             }
     
         } catch(error) {
@@ -101,6 +102,7 @@ const Checkout = () => {
     }
 
     if(orderId) {
+
         return (
             <CheckoutConfirm id={orderId} />
         )

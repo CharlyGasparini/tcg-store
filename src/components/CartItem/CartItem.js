@@ -1,7 +1,11 @@
 import "./CartItem.css";
 import { Link } from "react-router-dom";
+import { Notifications } from "../../notifications/notificationService";
+import { useContext } from "react";
 
 const CartItem = ({id, set, name, smallImg, price, quantity, supertype, handleOnRemove}) => {
+
+    const {setNotification} = useContext(Notifications);
 
     return (
         <div className="cartItem">
@@ -17,7 +21,10 @@ const CartItem = ({id, set, name, smallImg, price, quantity, supertype, handleOn
                         <span>${price*quantity}</span>   
                     </div>
                     <div className="cartItem__footer">
-                        <Link onClick={() => handleOnRemove(id)}>Remove</Link>
+                        <Link onClick={() => {
+                            handleOnRemove(id);
+                            setNotification("success", `${quantity} item removed from the cart`);
+                            }}>Remove</Link>
                         <Link to={`/detail/${id}`}>To detail</Link>
                     </div>
                 </div>
