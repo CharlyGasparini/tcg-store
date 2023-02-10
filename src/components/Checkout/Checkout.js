@@ -2,6 +2,7 @@ import { addDoc, collection, documentId, getDocs, query, where, writeBatch } fro
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartProvider";
+// import { useAsync } from "../../hooks/useAsync";
 import { Notifications } from "../../notifications/notificationService";
 import { db } from "../../services/firebase/firebaseConfig";
 import CheckoutConfirm from "../CheckoutConfirm/CheckoutConfirm";
@@ -9,6 +10,7 @@ import CheckoutForm from "../CheckoutForm/CheckoutForm";
 import CheckoutTable from "../CheckoutTable/CheckoutTable";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import "./Checkout.css";
+// import { createOrder } from "../../services/firebase/firestore/orders";
 
 
 const Checkout = () => {
@@ -27,6 +29,11 @@ const Checkout = () => {
     const navigate = useNavigate();
 
     const setters = [setName, setLastName, setPhone, setEmail, setAddress, setCity];
+    const buyer = {name, lastName, phone, email, address, city};
+
+    // const createOrderId = () => createOrder(cart, totalPrice, removeItem, clearCart, buyer);
+
+    // const {data: orderId, error, loading} = useAsync(createOrderId, [])
     
     const createOrder = async (e) => {
         e.preventDefault();
@@ -34,14 +41,7 @@ const Checkout = () => {
         
         try{
             const order = {
-                buyer: {
-                    name,
-                    lastName,
-                    phone,
-                    email,
-                    address,
-                    city
-                },
+                buyer,
                 cart,
                 totalPrice
             }
@@ -95,18 +95,27 @@ const Checkout = () => {
             }
     
         } catch(error) {
-            console.log(error)
+            console.log(error);
         } finally {
             setLoading(false);
         }
     }
 
     if(orderId) {
-
         return (
             <CheckoutConfirm id={orderId} />
         )
     }
+
+    // if(error) {
+    //     return (
+    //         <div style={{ display:"flex", flexDirection:"column", placeContent: "center", backgroundColor:"whitesmoke", maxWidth: "1200px", minHeight:"100vh",padding:"50px", margin:"auto"}}>
+    //             <h1 style={{marginBottom: "30px"}}>Error creating an order</h1>
+    //             <h2>Please, try again later.</h2>
+    //             <img src='../images/pokeball.gif' alt='pokebola girando' style={{margin:"30px auto 0", width: "100px" }}/>
+    //         </div>
+    //     )
+    // }
 
     if(cart.length === 0){
         return navigate("/");
@@ -117,7 +126,7 @@ const Checkout = () => {
     }
 
     return (
-        <div className="checkout">
+        <div className="checkout container">
             <div className="border-wrap">
                 <h1 className="checkout__title">Checkout</h1>
             </div>

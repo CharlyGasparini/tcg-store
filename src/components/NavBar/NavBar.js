@@ -11,7 +11,7 @@ const NavBar = () => {
 
     return (
         <div className="navbar">
-            <div className="container">
+            <div className="navbar__container">
                 <span onClick={() => navigate("/")} className="navbar__brand">
                     <img src="../images/pokeball-logo.png" alt="pokeball logo" />
                     <h2 className="navbar__title">Pokémon Center</h2>

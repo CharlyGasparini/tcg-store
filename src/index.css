@@ -66,6 +66,10 @@ i{
     font-size: 1.3rem;
 }
 
+i:hover{
+    color: var(--redPkmn);
+}
+
 h1,h2,h3,h4{
     font-family: 'Ubuntu', sans-serif;
     color: #231f20;
