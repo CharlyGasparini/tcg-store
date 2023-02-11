@@ -1,0 +1,23 @@
+.errorMessage{
+    background-color: whitesmoke;
+    min-height: 100vh;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+}
+
+.errorMessage h2 {
+    margin: 20px auto;
+}
+
+.errorMessage img {
+    width: 100px;
+    margin: 20px auto;
+}
+
+.errorMessage button {
+    width: 300px;
+    margin: 20px auto;
+}

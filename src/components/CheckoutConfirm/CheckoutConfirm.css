@@ -1,0 +1,18 @@
+.checkoutConfirm{
+    background-color: whitesmoke;
+    min-height: 100vh;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+}
+
+.checkoutConfirm h2{
+    margin: 20px auto;
+}
+
+.checkoutConfirm button {
+    width: 300px;
+    margin: 20px auto;
+}

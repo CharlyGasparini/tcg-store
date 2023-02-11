@@ -1,5 +1,8 @@
 .loadingPage{
-    height: 80vh;
+    background-color: whitesmoke;
+    max-width: 1200px;
+    margin: auto;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,8 +11,7 @@
 
 .loadingPage__spinner{
     margin: 3rem auto 0;
-    width: 5vw;
-    min-width: 100px;
+    width: 200px;
 }
 
 .msgContainer{
@@ -25,7 +27,7 @@
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
-    animation: typing 2s steps(13, end) forwards infinite;
+    animation: typing 1s steps(10, end) forwards infinite;
 }
 
 @keyframes typing {

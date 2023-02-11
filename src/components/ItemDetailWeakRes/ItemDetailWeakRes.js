@@ -1,22 +1,25 @@
-import { getLogos } from "../../energyLogos";
+import EnergyLogos from "../EnergyLogos";
 import "./ItemDetailWeakRes.css";
 
 
 const ItemDetailWeakRes = ({...card}) => {
+
     return (
         <div className="itemDetailOthers__weakRes">
             <div className="weakRes">
                 <h4>Weakness</h4>
-                {getLogos(card.weaknesses)}
+                <EnergyLogos types={card.weaknesses} />
+                {card.weaknesses.map(weak => weak.value)}
             </div>
             <div className="weakRes">
                 <h4>Resistance</h4>
-                {getLogos(card.resistances)}
+                <EnergyLogos types={card.resistances} />
+                {card.resistances.map(res => res.value)}
             </div>
             <div className="weakRes">
                 <h4>Retreat Cost</h4>
                 <span>
-                    {getLogos(card.retreatCost)}
+                    <EnergyLogos types={card.retreatCost} />
                 </span>
             </div>
         </div>

@@ -3,7 +3,7 @@
     background-color: lightgray;
 }
 
-.container{
+.navbar__container{
     width: 100%;
     max-width: 1200px;
     padding: 10px 0;
@@ -44,7 +44,7 @@
 
 
 @media (min-width: 768px){
-    .container{
+    .navbar__container{
         flex-direction: row;
         justify-content: space-between;
         padding: 10px 50px;
@@ -74,7 +74,7 @@
 }
 
 @media (min-width: 1024px){
-    .container{
+    .navbar__container{
         padding: 10px 150px;
     }
 }

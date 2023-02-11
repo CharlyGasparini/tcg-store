@@ -1,4 +1,4 @@
-import { getLogos } from "../../energyLogos";
+import EnergyLogos from "../EnergyLogos";
 import "./ItemDetailTitle.css";
 
 const ItemDetailTitle = ({...card}) => {
@@ -13,7 +13,7 @@ const ItemDetailTitle = ({...card}) => {
                     <span className="itemDetail__hp">
                         HP
                         {card.hp}
-                        {getLogos(card.types)}
+                        <EnergyLogos types={card.types} />
                     </span>
                 </div>
             </div>

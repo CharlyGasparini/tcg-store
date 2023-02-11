@@ -5,92 +5,77 @@ import ItemDetailOthers from "../ItemDetailOthers/ItemDetailOthers";
 import ItemDetailRules from "../ItemDetailRules/ItemDetailRules";
 import ItemDetailAbilities from "../ItemDetailAbilities/ItemDetailAbilities";
 import ItemDetailAttacks from "../ItemDetailAttacks/ItemDetailAttacks";
-import { useState } from "react";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartProvider";
 import { useNavigate } from "react-router-dom";
+import { Notifications } from "../../notifications/notificationService";
 
-const ItemDetail = ({card}) => {
+const ItemDetail = ({id, set, name, images, supertype, subtypes, types, price, hp, rules, abilities, attacks, legalities, weaknesses, resistances, retreatCost, stock}) => {
 
-    const [quantity, setQuantity] = useState(0);
+    const {addItem, isInCart} = useContext(CartContext);
+    const {setNotification} = useContext(Notifications);
+    const {small:smallImg, large:largeImg} = images;
     const navigate = useNavigate();
 
     const handleOnAdd = (quantity) => {
-        setQuantity(parseInt(quantity));
-        console.log(`Se agregaron ${quantity} elementos al carrito`);
+        addItem({id, set, name, smallImg, supertype, price, quantity});
+        setNotification("success", `${quantity} ${name} (${set}) added to cart`);
     }
 
-    document.title = `Pokémon Center | ${card.id}-${card.name}`;
+    const HaveStock = isInCart(id) ? <button onClick={() => navigate("/cart")} style={{width:"70%", margin:"auto"}}>Go to cart</button> : <ItemCount  initial={1} stock={stock} onAdd={handleOnAdd} />;
+    const DontHaveStock = <h3 style={{color:"var(--redFire)"}}>Out of stock</h3>
 
-    if(card.supertype === "Pokémon"){
+    document.title = `Pokémon Center | ${set}-${name}`;
+
+    if(supertype === "Pokémon"){
         return (
             <div className="itemDetail">
                 <div className="itemDetail__col">
-                    <img className="itemDetail__cardImg" src={card.images.large} alt={card.name} />
+                    <img className="itemDetail__cardImg" src={largeImg} alt={name} />
                     <div className="itemDetail__priceSet">
-                        <span>Price: ${card.price}</span>
-                        <span>Set: {card.id}</span>
+                        <span>Price: ${price}</span>
+                        <span>Set: {set}</span>
                     </div>
-                    {(quantity > 0) ? (<button onClick={() => navigate("/cart")} style={{maxWidth:"70%", margin:"auto"}}>Terminar compra</button> ) : (<ItemCount initial={1} stock={4} onAdd={handleOnAdd} />)}
+                    {(stock !== 0) ? HaveStock : DontHaveStock }
                 </div>
 
                 <div className="itemDetail__data">
                     
-                    <ItemDetailTitle name={card.name} supertype={card.supertype} subtypes={card.subtypes} types={card.types} hp={card.hp}/>
+                    <ItemDetailTitle name={name} supertype={supertype} subtypes={subtypes} types={types} hp={hp}/>
     
-                    <ItemDetailRules rules={card.rules}/>
+                    {rules !== undefined && <ItemDetailRules rules={rules}/>}
     
-                    <ItemDetailAbilities abilities={card.abilities}/>
+                    {abilities !== undefined && <ItemDetailAbilities abilities={abilities}/>}
     
-                    <ItemDetailAttacks attacks={card.attacks} />
+                    <ItemDetailAttacks attacks={attacks} />
     
-                    <ItemDetailOthers legalities={card.legalities} weaknesses={card.weaknesses} resistances={card.resistances} retreatCost={card.retreatCost} />
+                    <ItemDetailOthers legalities={legalities} weaknesses={weaknesses} resistances={resistances} retreatCost={retreatCost} />
                 </div>
             </div>
         )
-    }
-
-    if(card.supertype === "Trainer"){
+    } else{
         return (
             <div className="itemDetail">
                 <div className="itemDetail__col">
-                    <img className="itemDetail__cardImg" src={card.images.large} alt={card.name} />
-                    {(quantity > 0) ? (<button onClick={() => navigate("/cart")} style={{maxWidth:"70%", margin:"auto"}}>Terminar compra</button> ) : (<ItemCount initial={1} stock={4} onAdd={handleOnAdd} />)}
-                    
+                    <img className="itemDetail__cardImg" src={largeImg} alt={name} />
+                    <div className="itemDetail__priceSet">
+                        <span>Price: ${price}</span>
+                        <span>Set: {set}</span>
+                    </div>
+                    {(stock !== 0) ? HaveStock : DontHaveStock }
                 </div>
 
                 <div className="itemDetail__data">
                     
-                    <ItemDetailTitle name={card.name} supertype={card.supertype} subtypes={card.subtypes}/>
+                    <ItemDetailTitle name={name} supertype={supertype} subtypes={subtypes}/>
     
-                    <ItemDetailRules rules={card.rules}/>
+                    <ItemDetailRules rules={rules}/>
     
-                    <ItemDetailOthers legalities={card.legalities} />
+                    <ItemDetailOthers legalities={legalities} />
                 </div>
             </div>
         )
     }
-
-    if(card.supertype === "Energy"){
-        return (
-            <div className="itemDetail">
-                <div className="itemDetail__col">
-                    <img className="itemDetail__cardImg" src={card.images.large} alt={card.name} />
-                    {(quantity > 0) ? (<button onClick={() => navigate("/cart")} style={{maxWidth:"70%", margin:"auto"}}>Terminar compra</button> ) : (<ItemCount initial={1} stock={4} onAdd={handleOnAdd} />)}
-                    
-                </div>
-
-                <div className="itemDetail__data">
-                    
-                    <ItemDetailTitle name={card.name} supertype={card.supertype} subtypes={card.subtypes}/>
-    
-                    <ItemDetailRules rules={card.rules}/>
-    
-                    <ItemDetailOthers legalities={card.legalities} />
-                </div>
-            </div>
-        )
-    }
-    
-
 }
 
 export default ItemDetail;
