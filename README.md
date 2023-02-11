@@ -68,3 +68,20 @@ En el proyecto hay rutas a 4 Componentes.
 - ### `Checkout` 
   - Ruta: (/checkout)
   - Maneja la lógica para capturar los datos del comprador y generar una orden de compra en la DB Firestore.   
+
+
+### Navigation
+
+![navigation](https://user-images.githubusercontent.com/109870143/218226289-61fd2c8e-decc-4e4c-9ba0-20f4a92e3cd2.gif)
+
+
+
+
+## Datos
+
+Proyecto realizado por Carlos Roberto Gasparini
+- Comisión 34860 del curso de React JS de CoderHouse
+
+### Deploy en Vercel
+
+[Vercel](https://tcg-store-charlygasparini.vercel.app)
