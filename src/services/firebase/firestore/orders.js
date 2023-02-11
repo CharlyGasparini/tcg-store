@@ -1,7 +1,7 @@
 import { addDoc, collection, documentId, getDocs, query, where, writeBatch } from "firebase/firestore"
 import { db } from "../firebaseConfig"
 
-
+// NO FUNCIONA
 export const createOrder = (cart, totalPrice, removeItem, clearCart, buyer) => {
 
     return new Promise((resolve, reject) => {
